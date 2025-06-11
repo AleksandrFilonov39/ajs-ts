@@ -223,3 +223,24 @@ test('error if count < 1', () => {
     cart.minusCount(102)
   }).toThrow('Количество товаров не может быть меньше одного');
 });
+
+test('initialization count', () => {
+  const cart = new Cart();
+
+  const item2 : Buyable = {
+    id: 102,
+    name: 'book2',
+    price: 3000,
+  };
+
+  const item3 : Buyable = {
+    id: 102,
+    name: 'book2',
+    price: 3000,
+    count: 2
+  };
+  
+  cart.add(item2)
+  cart.add(item3)
+  expect(cart.items[0].count).toBe(2);
+});
